@@ -12,6 +12,26 @@ namespace Grades
         {
             grades = new List<float>();
         }
+
+        public GradeStatistics ComputeStatistics()
+        {
+            GradeStatistics stats = new GradeStatistics();
+
+
+
+            float sum = 0;
+            foreach (float grade in grades)
+            {
+                stats.HighestGrade = Math.Max(stats.HighestGrade, grade);
+                stats.LowestGrade = Math.Min(stats.LowestGrade, grade);
+                sum += grade;
+
+            }
+            stats.AverageGrade = sum / grades.Count;
+
+            return stats;
+        }
+
         public void AddGrade(float grade)
         {
             grades.Add(grade);
